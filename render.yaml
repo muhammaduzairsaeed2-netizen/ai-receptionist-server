@@ -3,7 +3,7 @@ services:
     name: ai-receptionist
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn cloud_server_v2:app --bind 0.0.0.0:$PORT
+    startCommand: gunicorn cloud_server:app --bind 0.0.0.0:$PORT
     envVars:
       - key: GROQ_API_KEY
         sync: false
