@@ -10,7 +10,7 @@ app = Flask(__name__)
 # CONFIGURATION
 # ===========================================
 
-GROQ_API_KEY = "gsk_youractualgroqapikeyhere"  # Paste your real key
+GROQ_API_KEY = "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"  # Paste your real key
 RESTAURANT_NAME = "Kebabish Original"
 OWNER_PHONE = "+447438276572"  # Your real mobile
 
