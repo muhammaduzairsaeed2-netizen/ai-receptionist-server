@@ -10,7 +10,7 @@ app = Flask(__name__)
 # CONFIG - FILL IN YOUR GROQ API KEY
 # ===========================================
 
-GROQ_API_KEY = "gsk_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+GROQ_API_KEY = "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"
 RESTAURANT_NAME = "Kebabish Original"
 
 # ===========================================
