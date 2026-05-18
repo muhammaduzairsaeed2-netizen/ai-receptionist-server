@@ -10,9 +10,9 @@ app = Flask(__name__)
 # CONFIGURATION
 # ===========================================
 
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
-RESTAURANT_NAME = os.environ.get("RESTAURANT_NAME", "Kebabish Original")
-OWNER_PHONE = os.environ.get("OWNER_PHONE", "")
+GROQ_API_KEY = "gsk_youractualgroqapikeyhere"  # Paste your real key
+RESTAURANT_NAME = "Kebabish Original"
+OWNER_PHONE = "+447438276572"  # Your real mobile
 
 # Store orders and conversations
 orders_db = {}
@@ -23,7 +23,7 @@ order_counter = 100  # Start from order #100
 # AI SYSTEM PROMPT
 # ===========================================
 
-SYSTEM_PROMPT = f"""You are a friendly, professional phone ordering assistant for {RESTAURANT_NAME}.
+SYSTEM_PROMPT = f"""You are a friendly, professional phone ordering assistant for {Kebabish Original 7 Kings}.
 
 MENU:
 - Chicken Tikka Masala: £12.99 (Spice: Mild, Medium, Hot, Extra Hot)
@@ -48,7 +48,7 @@ MENU:
 - Bottle Water: £1.50
 
 RULES:
-1. Greet: "Thank you for calling {RESTAURANT_NAME}! What can I get you today?"
+1. Greet: "Thank you for calling {Kebabish Original 7 kings}! What can I get you today?"
 2. Take orders one item at a time
 3. ALWAYS ask spice level for curries
 4. ALWAYS ask meat choice for kebabs
@@ -58,7 +58,7 @@ RULES:
 8. Ask for customer name
 9. Give total price
 10. Say: "Your order will be ready in 20-25 minutes"
-11. End with: "Thank you for calling {RESTAURANT_NAME}!"
+11. End with: "Thank you for calling {Kebabish_Original}!"
 
 Keep responses SHORT and NATURAL."""
 
