@@ -87,14 +87,41 @@ def get_ai_response(call_sid, user_message):
             timeout=10
         )
         
-        data = response.json()
-        ai_reply = data["choices"][0]["message"]["content"]
-        conversations[call_sid].append({"role": "assistant", "content": ai_reply})
+                data = response.json()
         
+        # DEBUG: Print full response to logs
+        print(f"GROQ FULL RESPONSE: {json.dumps(data)[:300]}")
+        
+        # Safe response parsing
+        if "choices" not in data:
+            print(f"GROQ ERROR: No 'choices' in response")
+            return "Thank you for calling Kebabish Original, what can I get you today?"
+        
+        if len(data["choices"]) == 0:
+            print(f"GROQ ERROR: Empty choices")
+            return "Thank you for calling Kebabish Original, what can I get you today?"
+        
+        first_choice = data["choices"][0]
+        if "message" not in first_choice:
+            print(f"GROQ ERROR: No 'message' in choice")
+            return "Thank you for calling Kebabish Original, what can I get you today?"
+        
+        message = first_choice["message"]
+        if "content" not in message:
+            print(f"GROQ ERROR: No 'content' in message")
+            return "Thank you for calling Kebabish Original, what can I get you today?"
+        
+        ai_reply = message["content"]
+        conversations[call_sid].append({"role": "assistant", "content": ai_reply})
+        print(f"AI REPLY: {ai_reply[:80]}")
         return ai_reply
+        
     except Exception as e:
-        print(f"AI error: {e}")
-        return "Sorry, I didn't catch that. Could you repeat please?"
+        print(f"AI CRASH ERROR: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        return "Thank you for calling Kebabish Original, what can I get you today?"
+
 
 # ===========================================
 # TWILIO WEBHOOKS
